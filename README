@@ -1,0 +1,95 @@
+# MacroSnap — AI-Powered Nutrition & Diet Companion
+
+**MacroSnap** is an interactive, Streamlit-based web application designed to simplify daily dietary tracking and nutritional coaching. Instead of manually logging every ingredient, users can simply upload a picture of their meal or type a query to receive an instant caloric and macronutrient estimation. Additionally, users can export their full interactive chat history directly to their phone via WhatsApp with a single click.
+
+Built using **Google Gemini (Multimodal & Chat AI)** and **Twilio (WhatsApp Business API)**.
+
+---
+
+## 🚀 Features
+* **AI Food Recognition:** Upload any meal photo, and the integrated vision model identifies the food items and estimates calories, proteins, carbs, and fats.
+* **Interactive Buddy:** Chat dynamically with a personalized AI nutrition assistant regarding dietary choices, recipes, or health tips.
+* **One-Click WhatsApp Export:** Seamlessly send a complete summary of the conversational log directly to your registered mobile number.
+
+---
+
+## 📁 Project Structure
+```text
+macrosnap/
+├── app.py                        # Main Streamlit application and UI logic
+├── prompts.py                    # Dedicated system prompts and AI personality configs
+├── requirements.txt              # Project dependencies
+├── .gitignore                    # Ensures environment credentials remain secure
+└── .streamlit/
+    └── secrets.toml.example      # Configuration template for secure credentials
+```
+
+---
+
+## 🛠️ Setup & Installation Instructions
+
+Follow these step-by-step instructions to get the application running locally.
+
+### Prerequisites
+* **Python 3.9** or newer installed on your machine.
+* A free **[Google AI Studio](https://google.com)** account to obtain a Gemini API key.
+* A free **[Twilio](https://twilio.com)** account to utilize the WhatsApp sandbox environment.
+
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com
+cd macrosnap
+```
+
+### Step 2: Set Up a Virtual Environment
+Create and activate an isolated Python environment for the project dependencies.
+
+* **macOS / Linux:**
+  ```bash
+  python -m venv venv
+  source venv/bin/activate
+  ```
+* **Windows (PowerShell):**
+  ```powershell
+  python -m venv venv
+  # If execution is blocked, run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+  .\\venv\\Scripts\\Activate.ps1
+  ```
+* **Windows (cmd.exe):**
+  ```cmd
+  python -m venv venv
+  venv\\Scripts\\activate.bat
+  ```
+
+### Step 3: Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Configure Environment Credentials
+The application requires API keys to securely communicate with Google Gemini and Twilio.
+
+1. Navigate to the `.streamlit/` directory.
+2. Duplicate the template file and rename it to `secrets.toml`:
+   ```bash
+   cp .streamlit/secrets.toml.example .streamlit/secrets.toml
+   ```
+3. Open `.streamlit/secrets.toml` in your text editor and fill in your unique credentials:
+   ```toml
+   GEMINI_API_KEY = "your_google_gemini_api_key_here"
+   TWILIO_ACCOUNT_SID = "your_twilio_account_sid_here"
+   TWILIO_AUTH_TOKEN = "your_twilio_auth_token_here"
+   TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886" # Standard Twilio sandbox number
+   ```
+
+### Step 5: Run the Application
+Start the Streamlit local development server:
+```bash
+streamlit run app.py
+```
+Your default web browser should automatically open the interface at `http://localhost:8501`.
+
+---
+
+## 🛡️ License
+Distributed under the MIT License. See `LICENSE` for more information.
